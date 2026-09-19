@@ -46,8 +46,8 @@ system_specs:
 
 Markdown renders parsed content in a Document with stable default block parts and
 constrained renderer seams. Callers may opt into the canonical plugin protocol for
-bounded source syntax, immutable document transformation, and typed extension
-rendering. They may separately opt into dollar-delimited math by supplying one typed
+bounded source syntax, immutable document transformation, typed extension
+rendering, and native typed document-start frontmatter. They may separately opt into dollar-delimited math by supplying one typed
 renderer for both inline and display expressions. The parser accepts matching
 explicit options. Existing parsing, rendering, styling, and streaming behavior
 remain unchanged when plugins and math are absent.
@@ -84,6 +84,9 @@ Consumer migration instructions belong in consumer docs and release notes.
   rendering observe them.
 - Sharing plugin-enabled parse configuration, transformed heading projection, and
   collision-safe heading IDs with Markdown-derived Outline utilities.
+- Decoding an optional document-start frontmatter block into caller-defined typed
+  metadata, withholding unfinished frontmatter while streaming, and excluding
+  completed frontmatter syntax from rendered content.
 
 **Does not own / non-goals**
 
@@ -108,8 +111,11 @@ node-kind narrowing. Released parser functions preserve their existing result sh
 through a compatibility projection. Transforms return validated replacement roots
 without entering parse identity. Every extension node introduced
 by syntax or transformation has complete renderer ownership and a deterministic
-text projection. Text matching, semantic fences, and source decoration are helpers
-that compile to transforms rather than separate protocol phases. `spec:AST-036`
+text projection. Text matching, semantic fences, source decoration, and native
+frontmatter are helpers that compile to transforms rather than separate protocol
+phases. Frontmatter is document metadata: it has no renderer, uses a bounded
+first-party key/value grammar rather than Remark compatibility, and exposes typed
+metadata through the helper that created it. `spec:AST-036`
 owns the shared protocol and limited Remark compatibility profile,
 `module:Markdown/remark` owns that profile's adapter, and this component owns
 aggregate application and fallback.
@@ -154,6 +160,7 @@ unions. Enabled calls return the explicit `InlineNodeWithMath` and
 | FR14 | Plugin failures preserve the last valid document and readable authored source. Core retains heading, navigation, image, list, table, and document semantics and exposes no raw-markup parser channel, registry, package discovery, mutable shared AST, or unrestricted DOM hook. URL-like plugin data remains untrusted; Astryx-owned sinks follow `family:navigation-destinations`.                                                                                                                                      |
 | FR15 | Incremental parse identity contains every parse-affecting Markdown option and only ordered syntax-bearing plugin name, protocol version, and `parseKey`. Transform or renderer changes reuse settled parse output, rerun transformation, and do not remount unaffected extension output.                                                                                                                                                                                                                                  |
 | FR16 | Plugin-enabled Markdown and Markdown-derived Outline use the same parse options, ordered transforms, extension text projection, slugger, and collision allocator so every visible heading, Outline label, heading ID, and target agree. A limited Remark adapter may run only synchronous transform plugins whose input and output round-trip through the documented supported MDAST subset.                                                                                                                              |
+| FR17 | `createMarkdownFrontmatter()` recognizes only a leading `---` block of unique `key: value` lines, decodes it through the caller's typed parser, stores finite JSON-like metadata on the canonical document, and removes the syntax from rendered content. An unfinished leading block yields no visible Markdown while streaming; malformed or unfinished final input remains ordinary Markdown. Frontmatter has no renderer and requires no Remark compatibility.                                                        |
 
 ### Allowed variation
 
@@ -190,6 +197,7 @@ unions. Enabled calls return the explicit `InlineNodeWithMath` and
 | Streaming math         | Incomplete math is withheld; once complete, the streamed nodes equal the full-parse nodes at top level and inside list/blockquote containers.           | Delimiters and expression text may arrive in separate chunks; source ranges remain optional.    |
 | Plugins omitted        | Released parser unions, AST, DOM, targets, heading IDs, and performance remain unchanged.                                                               | Omitted or empty list; both are one empty transform pipeline.                                   |
 | Plugins enabled        | Fixed syntax → immutable transform → render order, validated roots, readable fallback, and matching Markdown/Outline heading identity remain invariant. | Syntax, transforms, renderers, helper execution plans, plugin order, and live post-parse state. |
+| Native frontmatter     | A complete leading block is absent from rendered content and yields typed metadata; unfinished streaming input is withheld.                             | Metadata schema and values are caller-defined finite data.                                      |
 
 ### Transformation and precedence order
 
@@ -204,6 +212,10 @@ unions. Enabled calls return the explicit `InlineNodeWithMath` and
 - Built-in syntax and protected contexts claim first; extension syntax claims only
   eligible source; ordered transforms then receive deeply readonly document roots;
   Core validates each returned root before rendering.
+- A configured native frontmatter helper claims only the document-start delimiter.
+  It withholds an unfinished block during streaming, removes a completed block
+  before later transforms render the document, and makes typed metadata available
+  to those later transforms and to callers of that helper.
 - Text matching, semantic fences, and source decorations use transform helpers. Core
   may compile those helpers into indexed internal plans without exposing additional
   public phases.
@@ -316,6 +328,7 @@ and this change preserves the existing spelling exactly.
 | FR6–FR10               | `parser.test.ts` and `Markdown.test.tsx`                                   | Opt-out, inline/display math, escapes, currency, code, links, plugins                                                      | A delimiter is claimed without opt-in, TeX is formatted as Markdown, or opaque contexts leak.                                                        |
 | FR11                   | `incremental.test.ts` and `Markdown.test.tsx`                              | Every-character top-level/list/task-list/blockquote splits, CRLF, source ranges                                            | Streaming diverges from a full parse, shows partial syntax, mistakes a nested closer for an opener, or crosses a closed container.                   |
 | FR12–FR16              | plugin, transform, adapter, performance, and Outline parser tests          | omitted/empty lists, immutable transforms, invalid outputs, live updates, one compatible Remark plugin, duplicate headings | Empty behavior forks, input mutates, invalid structure escapes, transforms reparse, adapter loses content, budgets fail, or heading targets diverge. |
+| FR17                   | `plugins/frontmatter.test.tsx`, Storybook, and server rendering            | complete, malformed, non-leading, LF/CRLF, unfinished streaming, full plugin stack                                         | Metadata syntax renders after completion, unfinished syntax leaks while streaming, typing is lost, or later plugins stop composing.                  |
 | Public syntax/types    | `Markdown.public.test.ts`, core typecheck, and `Markdown.doc.mjs`          | Legacy exhaustive switches, math opt-ins, inferred extension-node unions                                                   | A released union widens, an enabled union loses nodes, or docs drift from declarations.                                                              |
 | Security/accessibility | `parser.test.ts`, `Markdown.test.tsx`, and renderer guidance               | Inert expression strings and renderer-owned semantics                                                                      | Astryx executes math as HTML or silently claims renderer-owned accessibility.                                                                        |
 
@@ -367,6 +380,19 @@ fails closed rather than being approximated.
 This projects `spec:AST-036/DEC-1` through `DEC-4` into the component owner. It
 rejects a registry, package discovery, mutable shared AST, raw markup, a second
 plugin prop, or an unrestricted Unified runtime.
+
+### DEC-3 — Frontmatter is typed document metadata
+
+**Reference:** `component:Markdown/DEC-3`
+**Decider:** `cixzhang`, `2026-09-19`
+
+Native frontmatter is a first-party helper in the ordered plugin pipeline. It
+recognizes only a leading delimited block, parses a deliberately small key/value
+grammar through a caller-provided typed decoder, and removes the syntax from the
+rendered document. It does not create a visual extension node or require Remark's
+frontmatter format. During streaming, incomplete frontmatter is withheld so raw
+metadata never flashes as content; once closed, later plugins can consume the
+metadata and the remaining document normally.
 
 ## Open questions
 
