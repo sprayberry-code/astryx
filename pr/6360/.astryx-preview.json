@@ -3,15 +3,15 @@
   "repository": "facebook/astryx",
   "pullRequest": {
     "number": 6360,
-    "headSha": "431140f3ea8c026b202bb3fb13d4c24acbeb2d52",
+    "headSha": "b0c9e5d95967ffc06a8d451705635f21b9446f80",
     "headRef": "fix/powersearch-consecutive-multi-select",
     "headRepository": "fullstackhacker/astryx",
     "headRepositoryId": "1374828027"
   },
   "sourceRun": {
-    "id": 35487241673,
+    "id": 35488740397,
     "attempt": 1,
-    "conclusion": "failure"
+    "conclusion": "success"
   },
   "targets": {
     "storybook": {
