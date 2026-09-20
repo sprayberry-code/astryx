@@ -3,26 +3,26 @@
   "repository": "facebook/astryx",
   "pullRequest": {
     "number": 6383,
-    "headSha": "47d613a1e7bdef777e2fa0d1f02e335f26ca82f6",
+    "headSha": "56e9a82cd1ec88f81fa82ff481f2f65016eb407c",
     "headRef": "touch-press-controller",
     "headRepository": "vjeux/astryx",
     "headRepositoryId": "1377680215"
   },
   "sourceRun": {
-    "id": 35480842112,
+    "id": 35487424588,
     "attempt": 1,
-    "conclusion": "failure"
+    "conclusion": "success"
   },
   "targets": {
     "storybook": {
-      "available": false,
+      "available": true,
       "path": "pr/6383/",
-      "indexSha256": null
+      "indexSha256": "b1897f3f4703faf8ebc0206d5d9223d232a0528f87b91aed5b2877c19b7952cd"
     },
     "sandbox": {
-      "available": false,
+      "available": true,
       "path": "pr/6383/sandbox/",
-      "indexSha256": null
+      "indexSha256": "6c7ced0064157a5e6c9e7c87c35282007d206faaea161ff88af0269820cd806c"
     }
   }
 }

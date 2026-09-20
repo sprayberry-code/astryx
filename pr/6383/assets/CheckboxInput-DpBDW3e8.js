@@ -1,0 +1,49 @@
+import{i as e,s as t}from"./preload-helper-CT_b8DTk.js";import{t as n}from"./react-B7Te67-h.js";import{E as r,F as i,I as a,O as o}from"./ime-B2gVvZm0.js";import{B as s,m as c,n as l,r as u,t as d}from"./utils-SyZNzL9F.js";import{t as f}from"./jsx-runtime-DqZldVDK.js";import{n as ee}from"./useTooltip-yc2D-N9u.js";import{n as te,t as p}from"./useMergedRefs-DQqXZ77v.js";import{n as ne,t as m}from"./Spinner-mWg6CE8Y.js";import{n as re,t as h}from"./usePressFeedback-Tecq1Zyj.js";import{n as g,r as _}from"./hooks-BnWssJlx.js";import{t as v}from"./Tooltip-fmzsZ8AL.js";import{a as ie,n as y,r as b,t as x}from"./Indicator-CbO87mND.js";import{n as S,t as ae}from"./FieldLabel-CTIRwye7.js";import{n as C,t as oe}from"./FieldStatus-BKw_Phcg.js";import{n as se,t as w}from"./useResolvedRequired-BkePNi4E.js";var T,E,D=e((()=>{T=t(n(),1),E=(0,T.createContext)(null),E.displayName=`CheckboxListContext`}));function O({label:e,isLabelHidden:t=!1,description:n,onChange:r,changeAction:i,isLoading:l=!1,value:d,isDisabled:f=!1,htmlName:p,disabledMessage:m,isReadOnly:h=!1,isOptional:g=!1,isRequired:v=!1,size:b=`md`,onFocus:x,onBlur:S,labelIcon:C,status:w,width:T,xstyle:D,className:O,style:P,ref:ce,"aria-describedby":F,...I}){let L=re(),R=(0,k.useId)(),z=(0,k.useId)(),B=(0,k.useId)(),V=se({isRequired:v,isOptional:g}),[,H]=(0,k.useTransition)(),[U,W]=(0,k.useOptimistic)(d),G=l||U!==d,K=f&&!!m,le=(0,k.use)(E),q=f&&(K||(le?.hasDisabledMessage??!1)),J=ee({placement:`above`,focusTrigger:`always`,isEnabled:K}),ue=ie(`checkbox`),Y=(0,k.useRef)(null),{focusProps:X}=_(Y,f),Z=U===`indeterminate`,Q=U===!0,de=(0,k.useCallback)(e=>{e&&(e.indeterminate=Z)},[Z]),$=[];F&&$.push(F),n&&$.push(z),w?.message&&$.push(B),K&&$.push(J.describedBy);let fe=$.length>0?$.join(` `):void 0;return(0,A.jsxs)(`div`,{...s(o(`checkbox-input`,{size:b}),a(T!=null&&N.width(T),D),O,P),children:[(0,A.jsxs)(`div`,{ref:e=>{J.interactionRef(e)},...f?void 0:L,...a(j.container,t&&j.containerLabelHidden,!f&&y,!f&&u.pressedAlpha),children:[(0,A.jsxs)(`div`,{...a(j.checkboxWrapper,M[b]),...X,children:[(0,A.jsx)(`input`,{...I,ref:te(ce,de,J.positionRef),id:R,type:`checkbox`,name:f?void 0:p,checked:Q,disabled:f&&!q,"aria-disabled":q?`true`:void 0,form:q?``:void 0,readOnly:h,required:v,"aria-required":V?`true`:void 0,onChange:e=>{if(f||G||h)return;let t=e.target.checked;r?.(t,e),i&&!e.defaultPrevented&&H(async()=>{W(t),await i(t,e)})},onFocus:x,onBlur:S,"aria-readonly":h||void 0,"aria-describedby":fe,"aria-invalid":w?.type===`error`?!0:void 0,"aria-busy":G||void 0,...a(j.input,c.centerInline(`-50%`),j.inputCoarse,M[b],f&&j.inputDisabled)}),(0,A.jsx)(`span`,{ref:Y,className:`astryxjp7ctv`,children:(0,A.jsx)(ue,{state:Z?`indeterminate`:Q?`checked`:`unchecked`,size:b,isDisabled:f,children:G?(0,A.jsx)(ne,{size:`sm`,shade:`inherit`}):null})})]}),(0,A.jsx)(`div`,{className:`astryx78zum5 astryxdt5ytf`,children:(0,A.jsx)(ae,{...o(`checkbox-label`),label:e,inputID:R,isLabelHidden:t,isDisabled:f,isOptional:g,isRequired:v,labelIcon:C,description:n,descriptionID:z})})]}),w?.message&&(0,A.jsx)(oe,{type:w.type,message:w.message,id:B,variant:`detached`}),K&&J.renderTooltip(m)]})}var k,A,j,M,N,P=e((()=>{k=t(n(),1),i(),S(),C(),m(),v(),d(),b(),l(),g(),h(),w(),x(),r(),D(),p(),A=f(),j={container:{k1xSpc:`astryx78zum5`,kGNEyG:`astryx6s0dn4`,kOIVth:`astryx1txdalj`,$$css:!0},containerLabelHidden:{kOIVth:`astryxxhr3t`,$$css:!0},checkboxWrapper:{kVAEAm:`astryx1n2onr6`,k1xSpc:`astryx78zum5`,kGNEyG:`astryx6s0dn4`,kjj79g:`astryxl56j7k`,kmuXW:`astryx2lah0s`,kHBbk8:`astryxc8icb0`,$$css:!0},input:{kVAEAm:`astryx10l6tqk`,k87sOh:`astryxwa60dl`,kogj98:`astryx1ghz6dp`,kmVPX3:`astryx1717udv`,kSiTet:`astryxg01cxk`,kkrTdU:`astryx1ypdohk astryx16khyan`,kY2c9j:`astryx1vjfegm`,$$css:!0},inputCoarse:{kjFi6P:`astryxkagaj0`,kHzOjL:`astryx80b3aj`,$$css:!0},inputDisabled:{kkrTdU:`astryxt0e3qv`,$$css:!0}},M={sm:{kzqmXN:`astryxw4jnvo`,kZKoxP:`astryx1qx5ct2`,$$css:!0},md:{kzqmXN:`astryxvy4d1p`,kZKoxP:`astryxxk0z11`,$$css:!0}},N={width:e=>[{kzqmXN:e==null?e:`astryx5lhr3w`,$$css:!0},{"--x-width":(e=>typeof e==`number`?e+`px`:e??void 0)(e)}]},O.displayName=`CheckboxInput`,O.__docgenInfo={description:`A checkbox input component for toggling boolean values.
+
+@example
+\`\`\`
+<CheckboxInput
+  label="Accept terms"
+  value={accepted}
+  onChange={setAccepted}
+/>
+<CheckboxInput
+  label="Subscribe"
+  description="Receive weekly updates"
+  value={subscribed}
+  onChange={setSubscribed}
+/>
+\`\`\``,methods:[],displayName:`CheckboxInput`,props:{ref:{required:!1,tsType:{name:`ReactRef`,raw:`React.Ref<HTMLInputElement>`,elements:[{name:`HTMLInputElement`}]},description:"Ref forwarded to the underlying `<input>` element"},label:{required:!0,tsType:{name:`string`},description:`Label text for the checkbox (always rendered for accessibility).`},isLabelHidden:{required:!1,tsType:{name:`boolean`},description:`Whether to visually hide the label (still accessible to screen readers).
+@default false`,defaultValue:{value:`false`,computed:!1}},description:{required:!1,tsType:{name:`string`},description:`Description text displayed below the label.`},onChange:{required:!1,tsType:{name:`signature`,type:`function`,raw:`(checked: boolean, e: ChangeEvent<HTMLInputElement>) => void`,signature:{arguments:[{type:{name:`boolean`},name:`checked`},{type:{name:`ChangeEvent`,elements:[{name:`HTMLInputElement`}],raw:`ChangeEvent<HTMLInputElement>`},name:`e`}],return:{name:`void`}}},description:`Callback fired when the checkbox state changes.`},changeAction:{required:!1,tsType:{name:`signature`,type:`function`,raw:`(
+  checked: boolean,
+  e: ChangeEvent<HTMLInputElement>,
+) => void | Promise<void>`,signature:{arguments:[{type:{name:`boolean`},name:`checked`},{type:{name:`ChangeEvent`,elements:[{name:`HTMLInputElement`}],raw:`ChangeEvent<HTMLInputElement>`},name:`e`}],return:{name:`union`,raw:`void | Promise<void>`,elements:[{name:`void`},{name:`Promise`,elements:[{name:`void`}],raw:`Promise<void>`}]}}},description:`Async action on change. Fires after onChange if not prevented.`},isLoading:{required:!1,tsType:{name:`boolean`},description:`Whether the checkbox is in a loading state.
+@default false`,defaultValue:{value:`false`,computed:!1}},value:{required:!0,tsType:{name:`union`,raw:`boolean | 'indeterminate'`,elements:[{name:`boolean`},{name:`literal`,value:`'indeterminate'`}]},description:`Whether the checkbox is checked, unchecked, or indeterminate.`},isDisabled:{required:!1,tsType:{name:`boolean`},description:`Whether the checkbox is disabled.
+@default false`,defaultValue:{value:`false`,computed:!1}},htmlName:{required:!1,tsType:{name:`string`},description:`The HTML name attribute for the underlying checkbox input.
+Useful for form submissions.`},disabledMessage:{required:!1,tsType:{name:`string`},description:`Explains why the checkbox is disabled. When set together with
+\`isDisabled\`, the checkbox shows a tooltip with this text on hover and
+keyboard focus, and the control stays focusable (via \`aria-disabled\`) so
+the reason is discoverable by keyboard and assistive technology.
+Activation stays blocked.
+
+Use this instead of wrapping a disabled checkbox in \`Tooltip\` — disabled
+controls don't emit the pointer events an external tooltip needs.
+
+@example
+\`\`\`
+<CheckboxInput
+  label="Accept terms"
+  value={accepted}
+  isDisabled
+  disabledMessage="Terms are managed by your administrator"
+/>
+\`\`\``},isReadOnly:{required:!1,tsType:{name:`boolean`},description:`Whether the checkbox is read-only.
+Displays the current state at full opacity but prevents interaction.
+Unlike \`isDisabled\`, read-only checkboxes are not visually dimmed.
+@default false`,defaultValue:{value:`false`,computed:!1}},isOptional:{required:!1,tsType:{name:`boolean`},description:`Whether the field is optional. Mutually exclusive with isRequired.
+@default false`,defaultValue:{value:`false`,computed:!1}},isRequired:{required:!1,tsType:{name:`boolean`},description:`Whether the checkbox is required. Mutually exclusive with isOptional.
+@default false`,defaultValue:{value:`false`,computed:!1}},width:{required:!1,tsType:{name:`union`,raw:`number | string`,elements:[{name:`number`},{name:`string`}]},description:"Width of the field. Numbers are treated as pixels, strings are used as-is\n(e.g. `'100%'`). Sizes the whole field (label, control, and status) so they\nstay aligned, unlike setting width via `xstyle`/`className`/`style`."},size:{required:!1,tsType:{name:`unknown`},description:`The size of the checkbox.
+- 'sm': Compact size (28px row height)
+- 'md': Default size (36px row height)
+@default 'md'`,defaultValue:{value:`'md'`,computed:!1}},onFocus:{required:!1,tsType:{name:`signature`,type:`function`,raw:`(e: FocusEvent<HTMLInputElement>) => void`,signature:{arguments:[{type:{name:`FocusEvent`,elements:[{name:`HTMLInputElement`}],raw:`FocusEvent<HTMLInputElement>`},name:`e`}],return:{name:`void`}}},description:`Callback fired when the checkbox receives focus.`},onBlur:{required:!1,tsType:{name:`signature`,type:`function`,raw:`(e: FocusEvent<HTMLInputElement>) => void`,signature:{arguments:[{type:{name:`FocusEvent`,elements:[{name:`HTMLInputElement`}],raw:`FocusEvent<HTMLInputElement>`},name:`e`}],return:{name:`void`}}},description:`Callback fired when the checkbox loses focus.`},labelIcon:{required:!1,tsType:{name:`union`,raw:`ReactNode | IconType`,elements:[{name:`ReactNode`},{name:`ComponentType`,elements:[{name:`SVGProps`,elements:[{name:`SVGSVGElement`}],raw:`SVGProps<SVGSVGElement>`}],raw:`ComponentType<SVGProps<SVGSVGElement>>`}]},description:`Icon to display before the label text.`},status:{required:!1,tsType:{name:`InputStatus`},description:`Status indicator for the checkbox.
+When set with a message, displays a colored message box below the checkbox.`}},composes:[`Omit`]}}));export{D as i,P as n,E as r,O as t};
