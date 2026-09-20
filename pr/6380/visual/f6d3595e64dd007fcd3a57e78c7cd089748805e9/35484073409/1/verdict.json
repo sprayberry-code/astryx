@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "status": "skipped",
+  "generatedAt": "2026-09-20T03:42:39.394Z",
+  "reason": "Broad stable scope is deferred to the daily release gate. It covers 386 trusted baseline shots instead of recapturing them for this PR.",
+  "context": {
+    "sha": "f6d3595e64dd007fcd3a57e78c7cd089748805e9",
+    "headSha": "f6d3595e64dd007fcd3a57e78c7cd089748805e9",
+    "baseSha": "b09d120ab04530dc0f03b5e0a594751ad8595369",
+    "runId": "35484073409",
+    "runAttempt": "1",
+    "trustedScope": {
+      "hasStableVisual": true,
+      "broadStableVisual": true,
+      "stableComponents": [
+        "CheckboxInput",
+        "Collapsible",
+        "Link",
+        "RadioList",
+        "SegmentedControl",
+        "Slider",
+        "Switch",
+        "TabList"
+      ],
+      "stableCoreFiles": [
+        "packages/core/src/CheckboxInput/CheckboxInput.tsx",
+        "packages/core/src/Collapsible/Collapsible.tsx",
+        "packages/core/src/Link/Link.tsx",
+        "packages/core/src/RadioList/RadioListItem.tsx",
+        "packages/core/src/SegmentedControl/SegmentedControlItem.tsx",
+        "packages/core/src/Slider/Slider.tsx",
+        "packages/core/src/Switch/Switch.tsx",
+        "packages/core/src/TabList/Tab.tsx",
+        "packages/core/src/TabList/__tests__/Tabs.a11y.known-failures.ts",
+        "packages/core/src/__tests__/PressedState.a11y.chromium.spec.ts",
+        "packages/core/src/__tests__/pressState.ts",
+        "packages/core/src/utils/interactionOverlay.stylex.ts"
+      ],
+      "stableThemes": [],
+      "canaryPackages": []
+    }
+  },
+  "counts": {
+    "total": 386,
+    "unchanged": 0,
+    "changed": 0,
+    "added": 0,
+    "removed": 0,
+    "failed": 0
+  },
+  "components": [
+    "CheckboxInput",
+    "Collapsible",
+    "Link",
+    "RadioList",
+    "SegmentedControl",
+    "Slider",
+    "Switch",
+    "TabList"
+  ],
+  "changes": [],
+  "added": [],
+  "removed": [],
+  "failures": []
+}

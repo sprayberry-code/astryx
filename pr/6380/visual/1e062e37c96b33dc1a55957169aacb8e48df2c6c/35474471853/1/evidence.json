@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "repo": "facebook/astryx",
+  "pr": 6380,
+  "headSha": "1e062e37c96b33dc1a55957169aacb8e48df2c6c",
+  "testedSha": "1e062e37c96b33dc1a55957169aacb8e48df2c6c",
+  "baseSha": "2414712631a54f5951ab868ab68a18be040fdc5a",
+  "run": {
+    "id": 35474471853,
+    "attempt": 1
+  },
+  "capture": null,
+  "deltas": [],
+  "verdict": {
+    "version": 1,
+    "status": "skipped",
+    "generatedAt": "2026-09-20T00:04:57.136Z",
+    "reason": "Broad stable scope is deferred to the daily release gate. It covers 386 trusted baseline shots instead of recapturing them for this PR.",
+    "context": {
+      "sha": "1e062e37c96b33dc1a55957169aacb8e48df2c6c",
+      "headSha": "1e062e37c96b33dc1a55957169aacb8e48df2c6c",
+      "baseSha": "2414712631a54f5951ab868ab68a18be040fdc5a",
+      "runId": "35474471853",
+      "runAttempt": "1",
+      "trustedScope": {
+        "hasStableVisual": true,
+        "broadStableVisual": true,
+        "stableComponents": [
+          "Collapsible",
+          "Indicator",
+          "Link",
+          "SegmentedControl",
+          "Slider",
+          "Switch",
+          "TabList"
+        ],
+        "stableCoreFiles": [
+          "packages/core/src/Collapsible/Collapsible.tsx",
+          "packages/core/src/Indicator/CheckboxIndicator.tsx",
+          "packages/core/src/Indicator/RadioIndicator.tsx",
+          "packages/core/src/Link/Link.tsx",
+          "packages/core/src/SegmentedControl/SegmentedControlItem.tsx",
+          "packages/core/src/Slider/Slider.tsx",
+          "packages/core/src/Switch/Switch.tsx",
+          "packages/core/src/TabList/Tab.tsx",
+          "packages/core/src/__tests__/pressState.ts",
+          "packages/core/src/utils/interactionOverlay.stylex.ts"
+        ],
+        "stableThemes": [],
+        "canaryPackages": []
+      }
+    },
+    "counts": {
+      "total": 386,
+      "unchanged": 0,
+      "changed": 0,
+      "added": 0,
+      "removed": 0,
+      "failed": 0
+    },
+    "components": [
+      "Collapsible",
+      "Indicator",
+      "Link",
+      "SegmentedControl",
+      "Slider",
+      "Switch",
+      "TabList"
+    ],
+    "changes": [],
+    "added": [],
+    "removed": [],
+    "failures": []
+  }
+}
